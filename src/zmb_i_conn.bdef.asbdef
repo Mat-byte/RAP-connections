@@ -1,0 +1,52 @@
+managed implementation in class ZMB_BP_CONN unique;
+strict;
+with draft;
+
+define behavior for ZMB_I_CONN alias Connection
+persistent table zmbtt_conn
+draft table ZMBDRAFTCONN
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( readonly )
+   UUID,
+   LocalCreatedAt,
+   LocalCreatedBy,
+   LastChangedAt,
+   LocalLastChangedAt,
+   LocalLastChangedBy;
+
+  field ( numbering : managed )
+   UUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZMBTT_CONN
+  {
+    UUID = UUID;
+    CarrID = CARRID;
+    ConnID = CONNID;
+    AirportFrom = AIRPORT_FROM;
+    CityFrom = CITY_FROM;
+    CountryFrom = COUNTRY_FROM;
+    AirportTo = AIRPORT_TO;
+    CityTo = CITY_TO;
+    CountryTo = COUNTRY_TO;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+}

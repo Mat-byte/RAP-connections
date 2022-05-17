@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition forZMB_C_CONN'
+define service ZMB_SERVICECONN {
+  expose ZMB_C_CONN as Connection;
+}
