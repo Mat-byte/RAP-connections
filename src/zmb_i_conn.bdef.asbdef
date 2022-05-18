@@ -4,22 +4,22 @@ with draft;
 
 define behavior for ZMB_I_CONN alias Connection
 persistent table zmbtt_conn
-draft table ZMBDRAFTCONN
+draft table zmbdraftconn
 etag master LocalLastChangedAt
 lock master total etag LastChangedAt
-authorization master( global )
+authorization master ( global )
 
 {
   field ( readonly )
-   UUID,
-   LocalCreatedAt,
-   LocalCreatedBy,
-   LastChangedAt,
-   LocalLastChangedAt,
-   LocalLastChangedBy;
+  UUID,
+  LocalCreatedAt,
+  LocalCreatedBy,
+  LastChangedAt,
+  LocalLastChangedAt,
+  LocalLastChangedBy;
 
   field ( numbering : managed )
-   UUID;
+  UUID;
 
 
   create;
@@ -49,4 +49,10 @@ authorization master( global )
     LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
     LastChangedAt = LAST_CHANGED_AT;
   }
+
+  validation CheckSemanticKey on save {create; update;}
+  validation CheckAirline on save {create; update;}
+  validation CheckOriginDestination on save {create; update;}
+
+  determination getCities on save { field AirportFrom, AirportTo; }
 }

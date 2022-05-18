@@ -1,93 +1,98 @@
 @Metadata.layer: #CUSTOMER
 @UI: {
   headerInfo: {
-    typeName: 'Connection', 
+    typeName: 'Connection',
     typeNamePlural: 'Connections'
   }
 }
 annotate view ZMB_C_CONN with
 {
   @UI.facet: [ {
-    id: 'idIdentification', 
-    type: #IDENTIFICATION_REFERENCE, 
-    label: 'Connection', 
-    position: 10 
+    id: 'idIdentification',
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'Connection',
+    position: 10
   } ]
   @UI.hidden: true
   uuid;
-  
+
   @UI.lineItem: [ {
-    position: 10 , 
+    position: 10 ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 10 
+    position: 10
   } ]
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+          name: 'ZMB_I_CARRIER_VH',
+          element: 'CarrierId'
+      }}]
   carrid;
-  
+
   @UI.lineItem: [ {
-    position: 20 , 
+    position: 20 ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 20 
+    position: 20
   } ]
   connid;
-  
+
   @UI.lineItem: [ {
-    position: 30 , 
+    position: 30 ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 30 
+    position: 30
   } ]
-  airportFrom;
-  
+  airportfrom;
+
   @UI.lineItem: [ {
-    position: 40 , 
+    position: 40 ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 40 
+    position: 40
   } ]
-  cityFrom;
-  
+  cityfrom;
+
   @UI.lineItem: [ {
-    position: 50 , 
+    position: 50 ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 50 
+    position: 50
   } ]
-  countryFrom;
-  
+  countryfrom;
+
   @UI.lineItem: [ {
-    position: 60 , 
+    position: 60 ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 60 
+    position: 40
   } ]
-  airportTo;
-  
+  airportto;
+
   @UI.lineItem: [ {
-    position: 70 , 
+    position: 70 ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 70 
+    position: 60
   } ]
-  cityTo;
-  
+  cityto;
+
   @UI.lineItem: [ {
-    position: 80 , 
+    position: 80 ,
     importance: #MEDIUM
   } ]
   @UI.identification: [ {
-    position: 80 
+    position: 80
   } ]
-  countryTo;
-  
+  countryto;
+
   @UI.hidden: true
-  localLastChangedAt;
+  locallastchangedat;
 }
